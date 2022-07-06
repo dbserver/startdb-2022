@@ -1,20 +1,12 @@
-const Forca = require('../forca');
+const Forca = require('../forca-jogo');
+const validarEtapa = require('./validar-etapa');
 
 const palavraSecreta = 'abacaxi';
 const jogoForca = new Forca(palavraSecreta);
 
-console.log(jogoForca.buscarDadosDoJogo().vidas === 6);
+let estadosEstaoCorretos = validarEtapa(6, '_______', '', 'aguardando chute', jogoForca);
 
-jogoForca.chutar('a');
+['a', 'b', 'c', 'x', 'i'].forEach(jogoForca.chutar);
 
-jogoForca.chutar('b');
-
-jogoForca.chutar('c');
-
-jogoForca.chutar('x');
-
-jogoForca.chutar('i');
-
-console.log(jogoForca.buscarDadosDoJogo().letrasChutadas.join('') === 'abcxi');
-console.log(jogoForca.buscarDadosDoJogo().vidas === 6);
-console.log(jogoForca.buscarEstado() === 'ganhou');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(6, 'abacaxi', 'abcxi', 'ganhou', jogoForca);
+console.log(estadosEstaoCorretos);

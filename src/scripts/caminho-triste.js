@@ -1,37 +1,30 @@
 const Forca = require('../forca');
+const validarEtapa = require('./validar-etapa');
 
 const palavraSecreta = 'abacaxi';
 const jogoForca = new Forca(palavraSecreta);
 
-console.log(jogoForca.buscarDadosDoJogo().vidas === 6);
+const palavraEsperada = '_______';
+const estadoEsperado = 'aguardando chute'
+
+let estadosEstaoCorretos = validarEtapa(6, palavraEsperada, '', estadoEsperado);
 
 jogoForca.chutar('e');
-
-console.log(jogoForca.buscarDadosDoJogo().vidas === 5);
-console.log(jogoForca.buscarDadosDoJogo().palavra.join('') === '_______');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(5, palavraEsperada, 'e', estadoEsperado);
 
 jogoForca.chutar('d');
-
-console.log(jogoForca.buscarDadosDoJogo().vidas === 4);
-console.log(jogoForca.buscarDadosDoJogo().palavra.join('') === '_______');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(4, palavraEsperada, 'ed', estadoEsperado);
 
 jogoForca.chutar('u');
-
-console.log(jogoForca.buscarDadosDoJogo().vidas === 3);
-console.log(jogoForca.buscarDadosDoJogo().palavra.join('') === '_______');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(3, palavraEsperada, 'edu', estadoEsperado);
 
 jogoForca.chutar('m');
-
-console.log(jogoForca.buscarDadosDoJogo().vidas === 2);
-console.log(jogoForca.buscarDadosDoJogo().palavra.join('') === '_______');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(2, palavraEsperada, 'edum', estadoEsperado);
 
 jogoForca.chutar('l');
-
-console.log(jogoForca.buscarDadosDoJogo().vidas === 1);
-console.log(jogoForca.buscarDadosDoJogo().palavra.join('') === '_______');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(1, palavraEsperada, 'eduml', estadoEsperado);
 
 jogoForca.chutar('p');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(0, palavraEsperada, 'edumlp', 'perdeu');
 
-console.log(jogoForca.buscarDadosDoJogo().letrasChutadas.join('') === 'edumlp');
-console.log(jogoForca.buscarDadosDoJogo().vidas === 0);
-console.log(jogoForca.buscarEstado() === 'perdeu');
+console.log(estadosEstaoCorretos);
