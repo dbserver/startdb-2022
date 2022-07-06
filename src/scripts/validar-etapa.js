@@ -2,11 +2,12 @@ const validarEtapa = (vidasEsperadas, palavraEsperada, letrasChutadasEsperadas, 
     const { vidas, palavra: arrPalavra, letrasChutadas: arrLetrasChutadas } = jogoForca.buscarDadosDoJogo();
     const palavra = arrPalavra.join('');
     const letrasChutadas = arrLetrasChutadas.join('');
+    const estado = jogoForca.buscarEstado();
 
     return vidas === vidasEsperadas
         && palavra === palavraEsperada
         && letrasChutadas === letrasChutadasEsperadas
-        && jogoForca.buscarEstado() === estadoEsperado;
+        && estado === estadoEsperado;
 }
 
 module.exports = validarEtapa;
