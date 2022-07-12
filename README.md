@@ -3,7 +3,7 @@
 Olá! Você está prestes a iniciar o nosso desafio para a seleção do StartDB. Se você chegou aqui sem conhecer o StartDB, você pode encontrar mais informações [neste link](https://start.dbserver.com.br/). O desafio desse ano será desenvolver as regras de um jogo da forca. 
 Você conhece o jogo da forca?
 
-![forca](docs/forca.gif)
+![forca](docs/forca.gif) 
 
 > **Observação:** *Dia das mães* no gif acima é a dica sobre a palavra secreta
 
