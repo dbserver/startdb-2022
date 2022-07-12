@@ -19,18 +19,23 @@ node desafio.js
 Esse arquivo contém uma estrutura base que define como iremos interagir com a sua implementação (métodos `chutar`, `buscarEstado` e `buscarDadosDoJogo`), logo, toda sua lógica deve ser implementada nesse arquivo. Você pode criar outros métodos/classes para organizar o seu código, porém **não deve alterar o nome dos métodos já criados**.
 
 ### O arquivo fonte `src/scripts/caminho-feliz.js`
-Esse arquivo contém a simulação de um jogo onde o jogador acerta todas as letras e a cada rodada vai coletando e validando os dados no estado do jogo. Ele pode lhe auxiliar na validação da implementação final. **Esse arquivo não precisa ser modificado**.
+Esse arquivo contém a simulação de um jogo onde o jogador acerta todas as letras e a cada rodada vai coletando e validando os dados no estado do jogo. Ele pode lhe auxiliar na validação da implementação final. O resultado esperado quando roda-se esse script é true, indicando que o jogador ganhou o jogo.
+**Esse arquivo não precisa ser modificado**.
 Você pode rodar essa validação através do comando:
 ```bash
 node src/scripts/caminho-feliz.js
 ```
 
 ### O arquivo fonte `src/scripts/caminho-triste.js`
-Esse arquivo contém a simulação de um jogo onde o jogador erra todas as letras e a cada rodada vai coletando e validando os dados no estado do jogo. Ele pode lhe auxiliar na validação da implementação final. **Esse arquivo não precisa ser modificado**.
+Esse arquivo contém a simulação de um jogo onde o jogador erra todas as letras e a cada rodada vai coletando e validando os dados no estado do jogo. Ele pode lhe auxiliar na validação da implementação final. O resultado esperado quando roda-se esse script é false, indicando que o jogador perdeu o jogo. 
+**Esse arquivo não precisa ser modificado**.
 Você pode rodar essa validação através do comando:
 ```bash
 node src/scripts/caminho-triste.js
 ```
+### O arquivo fonte `src/scripts/validar-etapa.js`
+Esse arquivo é usado nos scripts acima para ajudar nas validações.
+**Esse arquivo não precisa ser modificado**.
 
 ## Regras do jogo
 
