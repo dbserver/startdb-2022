@@ -1,4 +1,4 @@
-const Forca = require('../forca');
+const Forca = require('../desafio/forca');
 const validarEtapa = require('./validar-etapa');
 
 const palavraSecreta = 'abacaxi';

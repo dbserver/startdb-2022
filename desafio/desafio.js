@@ -1,5 +1,5 @@
 const readline = require('readline-sync');
-const Forca = require('./src/forca');
+const Forca = require('./forca');
 
 const jogo = new Forca('abacaxi');
 
@@ -8,3 +8,5 @@ while (!["perdeu", "ganhou"].includes(jogo.buscarEstado())) {
     jogo.chutar(chute);
     console.log(jogo.buscarDadosDoJogo());
 }
+
+console.log("você " + jogo.buscarEstado());
