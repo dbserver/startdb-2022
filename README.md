@@ -16,13 +16,13 @@ Você conhece o jogo da forca?
 ## Baixando o código do desafio
 ![image](docs/clone-repo.png)
 1. Em <i>Code</i> clique em <i>Download Zip</i>
-2. Acessar o arquivo [desafio.js](https://github.com/dbserver/startdb-2022/blob/main/desafio.js)
+2. Acessar o arquivo [desafio.js](https://github.com/dbserver/startdb-2022/blob/main/desafio/desafio.js)
 3. Resolver os desafios que estão comentados no [arquivo de regras](docs/Regras.md)
 
 ## Ou clonando o projeto no Github:
 
 1. Clonar projeto (Se não sabe como, acesse [aqui](https://docs.github.com/pt/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository))
-2. Acessar o arquivo [desafio.js](https://github.com/dbserver/startdb-2022/blob/main/desafio.js)
+2. Acessar o arquivo [desafio.js](https://github.com/dbserver/startdb-2022/blob/main/desafio/desafio.js)
 3. Resolver os desafios que estão comentados no [arquivo de regras](docs/Regras.md)
 
 ## Instalando o Node e rodando localmente
