@@ -9,4 +9,6 @@ let estadosEstaoCorretos = validarEtapa(6, '_______', '', 'aguardando chute', jo
 ['a', 'b', 'c', 'x', 'i'].forEach((letra) => jogoForca.chutar(letra));
 
 estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(6, 'abacaxi', 'abcxi', 'ganhou', jogoForca);
-console.log(estadosEstaoCorretos);
+const mensagemFinal =  estadosEstaoCorretos == true ? "Regras validadas com sucesso" :
+"Parece que algo está errado, verique suas regras";
+console.log(mensagemFinal);
