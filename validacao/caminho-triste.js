@@ -15,6 +15,12 @@ estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(5, palavraEsperada, 
 jogoForca.chutar('d');
 estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(4, palavraEsperada, 'ed', estadoEsperado, jogoForca);
 
+jogoForca.chutar('da');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(4, palavraEsperada, 'ed', estadoEsperado, jogoForca);
+
+jogoForca.chutar('u');
+estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(3, palavraEsperada, 'edu', estadoEsperado, jogoForca);
+
 jogoForca.chutar('u');
 estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(3, palavraEsperada, 'edu', estadoEsperado, jogoForca);
 
@@ -27,4 +33,6 @@ estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(1, palavraEsperada, 
 jogoForca.chutar('p');
 estadosEstaoCorretos = estadosEstaoCorretos && validarEtapa(0, palavraEsperada, 'edumlp', 'perdeu', jogoForca);
 
-console.log(estadosEstaoCorretos);
+const mensagemFinal =  estadosEstaoCorretos == true ? "Regras validadas com sucesso" :
+"Parece que algo está errado, verique suas regras";
+console.log(mensagemFinal);
