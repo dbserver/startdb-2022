@@ -5,7 +5,7 @@ class Forca {
     return this.#estado
   }
 
-  set estad(value) {
+  set estado(value) {
     this.#estado = value
   }
 
@@ -61,19 +61,21 @@ class Forca {
         })
 
         //valida se ocorreu ganhador
-        if (this.vidas > 0 && this.letrasAcertadas === this.palavraSecreta.length)
-          this.estados = 'ganhou'
+        if (this.vidas > 0 && this.letrasAcertadas === this.palavraSecreta.length) {
+          this.estado = 'ganhou'
+          console.log(this.estado)
+        }
       } else {
         //tira a vida se a palavra for incorreta
         this.vidas = this.vidas - 1
         //valida se ocorreu perdedor
         if (this.vidas === 0)
-          this.estados = 'perdeu'
+          this.estado = 'perdeu'
       }
     }
   }
 
-  buscarEstado() { return this.#estado } // Possiveis valores: "perdeu", "aguardando chute" ou "ganhou"
+  buscarEstado() { return this.estado } // Possiveis valores: "perdeu", "aguardando chute" ou "ganhou"
 
   buscarDadosDoJogo() {
     return {
