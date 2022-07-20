@@ -48,7 +48,7 @@ class Forca {
   }
 
   chutar(letra) {
-    //só passsa uma letra e que não forão digitadas
+    //só passsa uma letra e que não foi digitada
     if (letra.length === 1 && !this.verifica.letra.existeNoArray(letra, this.letrasChutadas)) {
       this.letrasChutadas.push(letra)
 
