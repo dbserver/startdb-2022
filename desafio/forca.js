@@ -32,6 +32,7 @@ class Forca {
           let letraDaPalavra = palavra[index]
           if (letra === letraDaPalavra) {
             if (typeof callback === 'function')
+              //executa callback se a letra existir
               callback(letra, index)
           }
         }
