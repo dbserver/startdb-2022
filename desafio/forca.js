@@ -52,7 +52,7 @@ class Forca {
     if (letra.length === 1 && !this.verifica.letra.existeNoArray(letra, this.letrasChutadas)) {
       this.letrasChutadas.push(letra)
 
-      //verifica se aletra existe na paravraSecreta
+      //verifica se aletra existe na palavraSecreta
       if (this.verifica.letra.existeNoArray(letra, this.palavraSecreta.split(''))) {
         //add a letra ao array da palavra
         this.verifica.letra.existeNaPalavra(letra, this.palavraSecreta, (letra, index) => {
