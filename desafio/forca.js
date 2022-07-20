@@ -63,7 +63,6 @@ class Forca {
         //valida se ocorreu ganhador
         if (this.vidas > 0 && this.letrasAcertadas === this.palavraSecreta.length) {
           this.estado = 'ganhou'
-          console.log(this.estado)
         }
       } else {
         //tira a vida se a palavra for incorreta
