@@ -60,14 +60,14 @@ class Forca {
           this.letrasAcertadas += 1
         })
 
-        //valida se ocorreu ganhador
+        //valida se ganhou
         if (this.vidas > 0 && this.letrasAcertadas === this.palavraSecreta.length) {
           this.estado = 'ganhou'
         }
       } else {
         //tira a vida se a palavra for incorreta
         this.vidas = this.vidas - 1
-        //valida se ocorreu perdedor
+        //valida se perdeu
         if (this.vidas === 0)
           this.estado = 'perdeu'
       }
