@@ -1,80 +1,172 @@
 class Forca {
-  #estado = 'aguardando chute'
+  #estado = 'aguardando chute';
 
-  get estado() {
-    return this.#estado
-  }
+  #ganhou = 'ganhou';
+  #perdeu = 'perdeu';
 
-  set estado(value) {
-    this.#estado = value
-  }
+  #palavraSecreta = '';
+  #arrayPalavraSecreta = [];
+  #compreimentoPalavraSecreta = 0;
+
+  #vidas = 6;
+  #minVida = 1;
+
+  #maxChutePorVez = 1;
+  #compreimentoDoChute = 0;
+
+  #letrasAcertadas = 0;
+  #letrasChutadas = [];
+
+  palavra = [];
 
   constructor(palavraSecreta) {
     this.palavraSecreta = palavraSecreta;
-    this.vidas = 6;
-    this.palavra = this.prepararIndexVazil(palavraSecreta.length);
-    this.letrasAcertadas = 0
-    this.letrasChutadas = [];
+    this.compreimentoPalavraSecreta = palavraSecreta.length;
+    this.arrayPalavraSecreta = this.palavraSecreta.split('');
+    this.palavra = this.#prepararIndexVazil(this.compreimentoPalavraSecreta);
   }
 
-  verifica = {
-    letra: {
-      existeNoArray(letra, array) {
-        if (array.join('').search(letra) !== -1) {
-          return true
-        } else {
-          return false
-        }
-      },
-
-      existeNaPalavra(letra, palavra, callback) {
-        for (const index in palavra) {
-          let letraDaPalavra = palavra[index]
-          if (letra === letraDaPalavra) {
-            if (typeof callback === 'function')
-              //executa callback se a letra existir
-              callback(letra, index)
-          }
-        }
-      }
-    }
+  get estado() {
+    return this.#estado;
   }
 
-  prepararIndexVazil(totalIndex) {
-    let ary = []
+  set estado(valor) {
+    return this.#estado = valor;
+  }
+
+  get ganhou() {
+    return this.#ganhou;
+  }
+
+  get perdeu() {
+    return this.#perdeu;
+  }
+
+  get palavraSecreta() {
+    return this.#palavraSecreta;
+  }
+
+  set palavraSecreta(valor) {
+    return this.#palavraSecreta = valor;
+  }
+
+  get arrayPalavraSecreta() {
+    return this.#arrayPalavraSecreta;
+  }
+
+  set arrayPalavraSecreta(valor) {
+    return this.#arrayPalavraSecreta = valor;
+  }
+
+  get compreimentoPalavraSecreta() {
+    return this.#compreimentoPalavraSecreta;
+  }
+
+  set compreimentoPalavraSecreta(valor) {
+    return this.#compreimentoPalavraSecreta = valor;
+  }
+
+  get vidas() {
+    return this.#vidas;
+  }
+
+  set vidas(valor) {
+    return this.#vidas = valor;
+  }
+
+  get minVida() {
+    return this.#minVida;
+  }
+
+  get maxChutePorVez() {
+    return this.#maxChutePorVez;
+  }
+
+  get compreimentoDoChute() {
+    return this.#compreimentoDoChute;
+  }
+
+  set compreimentoDoChute(valor) {
+    return this.#compreimentoDoChute = valor;
+  }
+
+  get letrasAcertadas() {
+    return this.#letrasAcertadas;
+  }
+
+  set letrasAcertadas(valor) {
+    return this.#letrasAcertadas = valor;
+  }
+
+  get letrasChutadas() {
+    return this.#letrasChutadas;
+  }
+
+  set letrasChutadas(valor) {
+    return this.#letrasChutadas.push(valor);
+  }
+
+  #prepararIndexVazil(totalIndex) {
+    let ary = [];
     for (let i = 0; i < totalIndex; i++) {
-      ary.push('_')
+      ary.push('_');
     }
-    return ary
+    return ary;
+  }
+
+  #existeNoArray(valor, array) {
+    if (array.join('').search(valor) !== -1) {
+      return true;
+    }
+    return false;
+  }
+
+  #adicionarLetraNaPosicaoCoreta(letra, index) {
+    this.palavra[index] = letra
+  }
+
+  #incrementarLetraAcertada() {
+    this.letrasAcertadas += 1;
+  }
+
+  #trataValorAcertado(letra, array) {
+    array.forEach((valor, index) => {
+      if (letra === valor) {
+        this.#adicionarLetraNaPosicaoCoreta(valor, index)
+        this.#incrementarLetraAcertada()
+      }
+    });
+  }
+
+  #verificaSeGanhou() {
+    if (this.vidas >= this.minVida && this.letrasAcertadas === this.compreimentoPalavraSecreta)
+      this.estado = this.ganhou;
+  }
+
+  #verificaSePerdeu() {
+    this.vidas -= 1;
+    if (this.vidas < this.minVida)
+      this.estado = this.perdeu;
   }
 
   chutar(letra) {
-    //só passsa uma letra e que não foi digitada
-    if (letra.length === 1 && !this.verifica.letra.existeNoArray(letra, this.letrasChutadas)) {
-      this.letrasChutadas.push(letra)
+    this.compreimentoDoChute = letra.length;
 
-      //verifica se aletra existe na palavraSecreta
-      if (this.verifica.letra.existeNoArray(letra, this.palavraSecreta.split(''))) {
-        //add a letra ao array da palavra
-        this.verifica.letra.existeNaPalavra(letra, this.palavraSecreta, (letra, index) => {
-          this.palavra[index] = letra
-          this.letrasAcertadas += 1
-        })
+    if (this.compreimentoDoChute > this.maxChutePorVez || this.#existeNoArray(letra, this.letrasChutadas)) return;
 
-        //valida se ganhou
-        if (this.vidas > 0 && this.letrasAcertadas === this.palavraSecreta.length)
-          this.estado = 'ganhou'
-      } else {
-        //tira a vida se a palavra for incorreta
-        this.vidas = this.vidas - 1
-        //valida se perdeu
-        if (this.vidas === 0)
-          this.estado = 'perdeu'
-      }
+    this.letrasChutadas = letra;
+
+    if (this.#existeNoArray(letra, this.arrayPalavraSecreta)) {
+      this.#trataValorAcertado(letra, this.arrayPalavraSecreta);
+
+      this.#verificaSeGanhou();
+      return;
     }
+
+    this.#verificaSePerdeu();
   }
 
-  buscarEstado() { return this.estado } // Possiveis valores: "perdeu", "aguardando chute" ou "ganhou"
+  buscarEstado() { return this.estado; } // Possiveis valores: "perdeu", "aguardando chute" ou "ganhou"
 
   buscarDadosDoJogo() {
     return {
