@@ -4,10 +4,23 @@ const validarEtapa = (vidasEsperadas, palavraEsperada, letrasChutadasEsperadas, 
     const letrasChutadas = arrLetrasChutadas.join('');
     const estado = jogoForca.buscarEstado();
 
-    return vidas === vidasEsperadas
-        && palavra === palavraEsperada
-        && letrasChutadas === letrasChutadasEsperadas
-        && estado === estadoEsperado;
+    let nota = 1;
+    nota += calcularNota(vidas === vidasEsperadas);
+    nota += calcularNota(palavra === palavraEsperada);
+    nota += calcularNota(letrasChutadas === letrasChutadasEsperadas);
+    nota += calcularNota(estado === estadoEsperado);
+
+    return {
+        "nota":nota,
+        "etapaValida": nota == 5
+    };
 }
+
+const calcularNota = (estado) => {
+    if(estado){
+        return 1;
+    }
+    return 0;
+} 
 
 module.exports = validarEtapa;
